@@ -84,35 +84,7 @@ final class AutomatonTests: XCTestCase {
     
     func test_historyRules_nextGeneration() {
         
-        struct Test {
-            let padding: Automaton.Padding
-            let rule: Automaton.Rule
-            let history: [String]
-        }
-        
-        let tests: [Test] = [
-            Test(
-                padding: .empty,
-                rule: 90,
-                history: History.rule90Empty
-            ),
-            Test(
-                padding: .wrapped,
-                rule: 90,
-                history: History.rule90Empty
-            ),
-            Test(
-                padding: .empty,
-                rule: 110,
-                history: History.rule110Empty
-            ),
-            Test(
-                padding: .wrapped,
-                rule: 110,
-                history: History.rule110Wrapped)
-        ]
-        
-        for test in tests {
+        for test in History.tests {
             for (before, after) in zip(test.history, test.history.dropFirst()) {
                 var automaton = Automaton(
                     rule: test.rule,
